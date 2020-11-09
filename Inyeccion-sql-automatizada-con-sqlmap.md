@@ -10,6 +10,11 @@
   * [Método GET](#Método-GET)
   * [Método POST](#Método-POST)
 * [Inyección sql básica paso a paso](#Inyección-sql-básica-paso-a-paso)
+* [Tampers](#Tampers)
+  * [Qué es un Tamper](#Qué-es-un-Tamper)
+  * [Funcion de un Tamper](#Funcion-de-un-Tamper)
+  * [¿Cómo usar los tampers?](#¿Cómo-usar-los-tampers?) 
+  * [Tampers mas usados](#Tampers-mas-usados)
 
 
 
@@ -258,4 +263,102 @@ Al terminar tenemos algo como esto:
 ```
 
 Con esto ya tenemos extraida la informacion que hay dentro de las columnas.
+
+
+Una vez que hemos visto el uso básico para la utilización de esta herramienta vamos al siguiente paso, en el ejemplo anterior usamos como muestra una página inventada en donde todo funcionó desde la primera, pero siendo realistas no siempre pasa eso, siempre nos vamos a encontrar con sitios web mas "complicados" y es desde este punto en donde esto se hace mas interesante. vamos a ver el uso de TAMPERS
+
+Otras opciones importantes que vamos a ver son:
+
+```
+| --random-agent | Lo cual nos permite "cambiar" el user agent con el cual se ejecutan las consultas |
+
+| --proxy=proxy | Lo cual nos permite conectarnos a la página que queremos escanear por medio de un proxy |
+
+| --level=1-5 | Este nos permite modificar el nivel de con el que queremos hacer el escaneo, por defecto esta en el en nivel 1 pero podemos cambiarlo hasta el 5 para hacer mas intrisivo el escaneo |
+
+| --risk=1-3 | De igual manera que --level, risk nos permite cambiar el nivel con el que queremos hacer el escaneo agregando mas agresividad pero al mismo tiempo haciendo mas ruido, este se puede configurar desde el 1 al 3 vieniendo por defecto en el número 1 |
+
+```
+
+## TAMPERS
+
+### Qué es un Tamper
+
+Un tamper es un archivo en python que nos da la opcion de "camuflar" los payloads que usa la herramienta de sqlmap para asi poder "bypassear" algun WAF.
+
+Sqlmap cuenta con una gran variedad de Tampers para ayudar a que la inyección sql se cumpla, cada Tamper tiene su funcion y su compativilidad, en algunos casos estos pueden mezclarse para un mejor resultado.
+
+Podemos ver la lista completa de los tampers dentro de la repo de sqlmap
+
+`https://github.com/sqlmapproject/sqlmap/tree/master/tamper`
+
+### Funcion de un Tamper
+
+Cada tamper tiene su propia funcionalidad, en este caso vamos a ver solo unos ejemplos para ver como estan diseñados los tampers y ver su funcionamiento.
+
+como ejemplo vamos a analizar el tamper: randomcomments
+
+`https://github.com/sqlmapproject/sqlmap/blob/master/tamper/randomcomments.py`
+
+podemos ver su funcion en una parte de su codigo:
+
+```
+import re
+
+from lib.core.common import randomRange
+from lib.core.compat import xrange
+from lib.core.data import kb
+from lib.core.enums import PRIORITY
+
+__priority__ = PRIORITY.LOW
+
+def tamper(payload, **kwargs):
+    """
+    Add random inline comments inside SQL keywords (e.g. SELECT -> S/**/E/**/LECT)
+    >>> import random
+    >>> random.seed(0)
+    >>> tamper('INSERT')
+    'I/**/NS/**/ERT'
+    """
+```
+Basicamente lo que hace es añadir comentarios en las palabras usadas en el payload, ejemplo:
+
+```
+SELECT -> S/**/E/**/LECT
+
+UNION -> UN/**/I/**/ON
+```
+
+### ¿Cómo usar los tampers?
+
+Para hacer uso de un tamper o varios tampers en el escaneo de un sitio web tenemos que especificarlo con la siguiente opcion:
+
+`--tamper="nombredeltamper"`
+
+si queremos usar mas de un tamper solo tenemos que usar una , para separarlos:
+
+`--tamper="nombredeltamper1,nombredeltamper2,nombredeltamper3,etc"`
+
+Entonces, tenemos la siguente linea con los tampers agregados:
+
+`sqlmap.py -u "http://www.paginaparaejemplo.com/algo.php?id=1&id2=1&id3=1" --tamper="nombredeltamper1,nombredeltamper2,nombredeltamper3,etc"`
+
+
+### Tampers mas usados
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
