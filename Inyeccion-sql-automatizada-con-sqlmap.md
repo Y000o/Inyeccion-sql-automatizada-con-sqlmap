@@ -20,7 +20,9 @@
     * [MSAccess](#MSAccess)
     * [PostgreSQL](#PostgreSQL)
     * [SQLite](#SQLite)
-
+* [SQL-SHELL](#SQL-SHELL)
+* [SQL-SHELL](#SQL-SHELL)
+* [Escaneos anonimos con Tor](#Escaneos-anonimos-con-Tor)
 
 
 ## ¿Qué es sqlmap?
@@ -480,13 +482,26 @@ nonrecursivereplacement
 
 ```
 
+### SQL-shell
+
+la opción  `--sql-shell` nos carga una shell de SQL desde la cual podemos trabajar
+
+Ejemplo:
+
+`sqlmap.py -u "http://www.paginaparaejemplo.com/algo.php?id=1&id2=1&id3=1" --sql-shell`
+
+### SQL-query
+
+la opción `--sql-query`
 
 
+### Escaneos anonimos con Tor
+
+Una de las partes mas importantes al hacer un trabajo en el área de la seguridad informatica es saber cuidarse un poco, para es el anonimato es esencial, en este caso vamos a usar TOR para filtrar las peticiones.
+
+`sqlmap.py --tor --tor-type=SOCKS5 --check-tor -u "http://www.paginaparaejemplo.com/algo.php?id=1&id2=1&id3=1"`
 
 
-
-
-
-
+Para terminar me gustaría agradecerte por dedicarle un poco de tu tiempo a este escrito, si te gusta puedes compartirlo.
 
 
