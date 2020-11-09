@@ -15,6 +15,11 @@
   * [Funcion de un Tamper](#Funcion-de-un-Tamper)
   * [¿Cómo usar los tampers?](#¿Cómo-usar-los-tampers?) 
   * [Tampers mas usados](#Tampers-mas-usados)
+    * [MySQL](#MySQL)
+    * [MSSQL](#MSSQL)
+    * [MSAccess](#MSAccess)
+    * [PostgreSQL](#PostgreSQL)
+    * [SQLite](#SQLite)
 
 
 
@@ -346,11 +351,134 @@ Entonces, tenemos la siguente linea con los tampers agregados:
 
 ### Tampers mas usados
 
+Para poder clasificar los tampers mas usados primero debemos separar los tampers para organizarlos, como mencioné antes, cada tamper es diferente y cada uno se usa para cosas distintas, por eso vamos a separar los tampers por bases de datos en donde funcionan:
 
+Tenemos lo siguiente:
 
+#### MySQL
 
+```
+space2randomblank
+unionalltounion
+unmagicquotes
+versionedkeywords
+versionedmorekeywords
+xforwardedforbetween
+bluecoat
+charencode
+charunicodeencode
+concat2concatws
+equaltolike
+greatest
+halfversionedmorekeywords
+ifnull2ifisnull
+space2morehash
+space2mysqldash
+space2plus
+modsecurityversioned
+modsecurityzeroversioned
+multiplespaces
+securesphere
+space2comment
+space2hash
+nonrecursivereplacement
+percentage
+randomcase
 
+```
 
+#### MSSQL
+
+```
+sp_password
+space2comment
+space2dash
+space2mssqlblank
+space2mysqldash
+space2plus
+space2randomblank
+charencode
+charunicodeencode
+equaltolike
+greatest
+unionalltounion
+unmagicquotes
+multiplespaces
+nonrecursivereplacement
+percentage
+randomcase
+securesphere
+
+```
+
+#### MSAccess
+
+```
+modsecurityversioned
+modsecurityzeroversioned
+equaltolike
+greatest
+halfversionedmorekeywords
+nonrecursivereplacement
+percentage
+randomcase
+securesphere
+between
+bluecoat
+charencode
+charunicodeencode
+concat2concatws
+space2comment
+space2hash
+space2morehash
+space2mysqldash
+space2plus
+space2randomblank
+unionalltounion
+unmagicquotes
+versionedkeywords
+versionedmorekeywords
+ifnull2ifisnull
+multiplespaces
+
+```
+
+#### PostgreSQL
+
+```
+xforwardedfor
+space2comment
+space2plus
+space2randomblank
+between
+charencode
+charunicodeencode
+equaltolike
+greatest
+multiplespaces
+nonrecursivereplacement
+percentage
+randomcase
+securesphere
+between
+
+```
+
+#### SQLite 
+
+``` 
+space2plus
+unionalltounion
+unmagicquotes
+xforwardedfor
+ifnull2ifisnull
+randomcase
+securesphere
+space2comment
+space2dashmmultiplespaces
+nonrecursivereplacement
+
+```
 
 
 
