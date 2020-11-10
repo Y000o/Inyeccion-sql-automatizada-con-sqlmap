@@ -29,7 +29,7 @@
   * [Inline queries](#Inline-queries)
 * [Risk y Level](#Risk-y-Level)
 * [SQL-SHELL](#SQL-SHELL)
-* [SQL-SHELL](#SQL-SHELL)
+* [SQL-query](#SQL-query)
 * [Sqlmap y dorks](#Sqlmap-y-dorks) 
 * [Escaneos anonimos con Tor](#Escaneos-anonimos-con-Tor)
 
