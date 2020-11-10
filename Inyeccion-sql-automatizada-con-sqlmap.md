@@ -20,6 +20,13 @@
     * [MSAccess](#MSAccess)
     * [PostgreSQL](#PostgreSQL)
     * [SQLite](#SQLite)
+* [Techniques](#Techniques)
+  * [Boolean-based blind](#Boolean-based-blind)
+  * [Error-based](#Error-based)
+  * [Union query-based](#Union-query-based)
+  * [Stacked queries](#Stacked-queries)
+  * [Time-based blind](#Time-based-blind)
+  * [Inline queries](#Inline-queries)
 * [SQL-SHELL](#SQL-SHELL)
 * [SQL-SHELL](#SQL-SHELL)
 * [Escaneos anonimos con Tor](#Escaneos-anonimos-con-Tor)
@@ -481,6 +488,54 @@ space2dashmmultiplespaces
 nonrecursivereplacement
 
 ```
+### Techniques 
+
+Otro punto importante es conocer las tecnicas que utiliza esta herramienta.
+
+Como sabemos, sqlmap utiliza muchos tipos de payloads los cuales se clasifican en 6 partes, los cuales son:
+
+```
+B: Boolean-based blind
+E: Error-based
+U: Union query-based
+S: Stacked queries
+T: Time-based blind
+Q: Inline queries
+
+```
+#### Boolean-based blind
+
+Boolean-based blind significa que la vulnerabilidad se basa en valores booleanos (true or false) y se dice que es ciega por que no muetra alguna señal de que hay un error en la página.
+
+#### Error-based
+
+Error-based significa que la inyeccion se basa en los mensajes de error que el servidor responde y asi conocer un poco mas sobre la estructura de la base de datos que se esta usando.
+
+#### Union query-based
+
+Union query-based significa que estamos aprovechando que el operador UNION de sql puede ser usado, gracias a esto podemos combinar declaraciones que serán visualizadas como parte de la respuesta del servidor.
+
+#### Stacked queries
+
+Stacked queries significa que la vulneravilidad se basa en añadir mas consultas sql en serie, de esta manera mandar una consulta normal y al mismo tiempo mandar la consulta del atacante, todo esto solo dividiendo las consultas con un ";".
+
+#### Time-based blind
+
+Time-based blind es cuando la vulnerabilidad se basa en el tiempo, lo que significa que un atacante enviará una consulta sql obligano a la base de datos a esperar una cierta cantidad de tiempo, si el tiempo de respuesta del servidor es el mismo tiempo que el atacante declaró en la sentencia, esto significa que es vulnerable.
+
+#### Inline queries
+
+Inline queries consiste en unir una query sql dentro de otra y asi sucesivamente para ver si la sentencia es ejecutada.
+
+
+
+
+
+
+
+--technique=TECH    SQL injection techniques to use (default "BEUSTQ")
+
+
 
 ### SQL-shell
 
