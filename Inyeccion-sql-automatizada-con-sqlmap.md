@@ -27,6 +27,7 @@
   * [Stacked queries](#Stacked-queries)
   * [Time-based blind](#Time-based-blind)
   * [Inline queries](#Inline-queries)
+* [Risk y Level](#Risk-y-Level)
 * [SQL-SHELL](#SQL-SHELL)
 * [SQL-SHELL](#SQL-SHELL)
 * [Escaneos anonimos con Tor](#Escaneos-anonimos-con-Tor)
@@ -527,15 +528,34 @@ Time-based blind es cuando la vulnerabilidad se basa en el tiempo, lo que signif
 
 Inline queries consiste en unir una query sql dentro de otra y asi sucesivamente para ver si la sentencia es ejecutada.
 
+Ahora que ya sabemos cuales con las tecnicas y a que tipo de error de enfoca cada una, vamos a ver como utilizarlas.
 
 
+Para utilizar alguna tecnica deltro del escaneo tenemos que declarar la siguente opcion:
 
-
-
-
+`
 --technique=TECH    SQL injection techniques to use (default "BEUSTQ")
+`
+Sqlmap por defecto utiliza todas las tecnicas al mismo tiempo lo que viene siendo igual que:
+
+`
+--technique=BEUSTQ
+`
+
+Esto es muy bueno, ya que la herramienta nos facilita mucho el trabajo pero al mismo tiempo esto hace que el escaneo tarde mas ya que escanea para todos los errores para detectarlo. Antes de hacer un escaneo tenemos que tratar de recolectar toda la informacion posible para que se nos haga mas sencillo el escaneo y ahorras mas tiempo, como por ejemplo detectar que error estamos viendo y asi declarar que tipo de error queremos explotar usando una tecnica para ese tipo de error en especifico, gracias a esto le decimos a la herramienta que se enfoque solamente en ese tipo de error y hacer mas rapido y directo el escaneo.
+
+por ejemplo:
+
+`sqlmap.py -u "http://www.paginaparaejemplo.com/algo.php?id=1&id2=1&id3=1" --technique=B`
 
 
+### Risk y Level
+
+Otra cosa muy importante es conocer el "Risk" y Level":
+
+Risk: riesgo de que se produzca un error. Los payloads que menos riesgo tienen son las de riesgo 1, y las que más las de riesgo 2.
+
+Level: cantidad de peticiones por payload. El nivel 1 realiza pocas peticiones mientras que el nivel 5 realiza muchas.
 
 ### SQL-shell
 
@@ -548,6 +568,17 @@ Ejemplo:
 ### SQL-query
 
 la opción `--sql-query`
+
+#### Sqlmap y dorks 
+
+Sqlmap tambien nos permite hacer una busqueda por dorks de google para encontrar paginas vulnerables, esto se hace con la siguente secuencia:
+
+
+`sqlmap.py -g DORK`
+
+ejemplo:
+
+`sqlmap.py -g "inurl:\".php?id=1\""`
 
 
 ### Escaneos anonimos con Tor
