@@ -67,7 +67,7 @@ Sqlmap automaticamente usa el metodo GET para trabajar, la sintaxis nos queda de
 
 `sqlmap.py -u "http://www.paginaparaejemplo.com/algo.php?id=1&id2=1&id3=1"`
 
-Algo muy importante a tener en cuenta es que sqlmap escanea la página parametro por paramerto, esto significa que si tenemos una página con mas de un parametro tenemos que especificar el puerto que queremos analizar o escanear todos uno a uno.
+Algo muy importante a tener en cuenta es que sqlmap escanea la página parametro por paramerto, esto significa que si tenemos una página con mas de un parámetro tenemos que especificar el parámetro que queremos analizar o escanear todos uno a uno.
 
 
 ### Método POST
