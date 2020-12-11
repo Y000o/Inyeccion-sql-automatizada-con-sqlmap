@@ -1,4 +1,4 @@
-# INYECCIÓN SQL BÁSICA 💉
+# INYECCIÓN SQL USANDO SQLMAP 💉
 
 ## ¿Para quién esta enfocado este escrito? 
 
@@ -37,7 +37,7 @@ https://github.com/Y000o/sql_injection_basic/blob/master/sql_injection_basic_en.
 -----------------------------------------------------------------------------------------------------------------------
 
 
-# BASIC SQL INJECTION 💉
+# SQL INJECTION USING SQLMAP 💉
 
 ## Who is this writing focused on?
 
